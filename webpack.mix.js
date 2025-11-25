@@ -23,4 +23,11 @@ mix.js('resources/js/app.js', 'public/js')
                 }
             ]
         }
-    });
+    })
+    .options({
+        hmrOptions: {
+            host: '0.0.0.0',
+            port: 5000
+        }
+    })
+    .disableNotifications();
