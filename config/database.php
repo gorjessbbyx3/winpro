@@ -126,9 +126,30 @@ return [
         'cluster' => false,
 
         'default' => [
-            'host'     => '127.0.0.1',
-            'port'     => 6379,
-            'database' => 3,
+            'scheme'   => 'tcp',
+            'host'     => env('REDIS_HOST', '127.0.0.1'),
+            'port'     => env('REDIS_PORT', 6379),
+            'password' => env('REDIS_PASSWORD', null),
+            'database' => 0,
+            'read_write_timeout' => 60,
+        ],
+
+        'cache' => [
+            'scheme'   => 'tcp',
+            'host'     => env('REDIS_HOST', '127.0.0.1'),
+            'port'     => env('REDIS_PORT', 6379),
+            'password' => env('REDIS_PASSWORD', null),
+            'database' => 1,
+            'read_write_timeout' => 60,
+        ],
+
+        'session' => [
+            'scheme'   => 'tcp',
+            'host'     => env('REDIS_HOST', '127.0.0.1'),
+            'port'     => env('REDIS_PORT', 6379),
+            'password' => env('REDIS_PASSWORD', null),
+            'database' => 2,
+            'read_write_timeout' => 60,
         ],
 
     ],
