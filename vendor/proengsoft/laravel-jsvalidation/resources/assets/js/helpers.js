@@ -183,6 +183,10 @@ $.extend(true, laravelValidation, {
             var timeValue = false;
             var fmt = new DateFormatter();
 
+            if (typeof value === 'number' && typeof format === 'undefined') {
+                return value;
+            }
+
             if (typeof format === 'object') {
                 var dateRule = this.getLaravelValidation('DateFormat', format);
                 if (dateRule !== undefined) {
@@ -196,8 +200,10 @@ $.extend(true, laravelValidation, {
                 timeValue = this.strtotime(value);
             } else {
                 timeValue = fmt.parseDate(value, format);
-                if (timeValue) {
+                if (timeValue instanceof Date && fmt.formatDate(timeValue, format) === value) {
                     timeValue = Math.round((timeValue.getTime() / 1000));
+                } else {
+                    timeValue = false;
                 }
             }
 
@@ -399,22 +405,13 @@ $.extend(true, laravelValidation, {
          * @param name
          * @returns {RegExp}
          */
-        regexFromWildcard: function(name) {
-            var nameParts = name.split("[*]");
-            if (nameParts.length === 1) {
-                nameParts.push('');
-            }
-            var regexpParts = nameParts.map(function(currentValue, index) {
-                if (index % 2 === 0) {
-                    currentValue = currentValue + '[';
-                } else {
-                    currentValue = ']' +currentValue;
-                }
+        regexFromWildcard: function (name) {
+            var nameParts = name.split('[*]');
+            if (nameParts.length === 1) nameParts.push('');
 
-                return laravelValidation.helpers.escapeRegExp(currentValue);
-            });
-
-            return new RegExp('^'+regexpParts.join('[^\\]]*')+'$');
+            return new RegExp('^' + nameParts.map(function(x) {
+                return laravelValidation.helpers.escapeRegExp(x)
+            }).join('\\[[^\\]]*\\]') + '$');
         },
 
         /**
@@ -526,7 +523,7 @@ $.extend(true, laravelValidation, {
          * @returns {*|string}
          */
         allElementValues: function (validator, element) {
-            if (element.name.indexOf('[') !== -1 && element.name.indexOf(']') !== -1) {
+            if (element.name.indexOf('[]') !== -1) {
                 return validator.findByName(element.name).map(function (i, e) {
                     return validator.elementValue(e);
                 }).get();

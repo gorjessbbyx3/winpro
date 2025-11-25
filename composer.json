@@ -5,7 +5,7 @@
     "type": "project",
     "repositories": [],
     "require": {
-        "php": "^7.2",
+        "php": "^7.2|^8.0|^8.1|^8.2",
         "anlutro/l4-settings": "^1.0",
         "bacon/bacon-qr-code": "^2.0",
         "barryvdh/laravel-debugbar": "^3.3",

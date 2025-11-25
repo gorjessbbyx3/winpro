@@ -1,6 +1,45 @@
 CHANGELOG
 =========
 
+1.13.1 (2025-11-21)
+-------------------
+
+* First PIE release. No other changes.
+
+1.13.0 (2025-11-20)
+-------------------
+
+* A redundant `filesize()` call in the reader's constructor was removed.
+  Pull request by Pavel Djundik. GitHub #189.
+
+1.12.1 (2025-05-05)
+-------------------
+
+* The C extension now checks that the database metadata lookup was
+  successful.
+
+1.12.0 (2024-11-14)
+-------------------
+
+* Improve the error handling when the user tries to open a directory
+  with the pure PHP reader.
+* Improve the typehints on arrays in the PHPDocs.
+
+1.11.1 (2023-12-01)
+-------------------
+
+* Resolve warnings when compiling the C extension.
+* Fix various type issues detected by PHPStan level. Pull request by
+  LauraTaylorUK. GitHub #160.
+
+1.11.0 (2021-10-18)
+-------------------
+
+* Replace runtime define of a constant to facilitate opcache preloading.
+  Reported by vedadkajtaz. GitHub #134.
+* Resolve minor issue found by the Clang static analyzer in the C
+  extension.
+
 1.10.1 (2021-04-14)
 -------------------
 

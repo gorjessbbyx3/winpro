@@ -12,13 +12,13 @@
   ),
   'barryvdh/laravel-debugbar' => 
   array (
+    'aliases' => 
+    array (
+      'Debugbar' => 'Barryvdh\\Debugbar\\Facades\\Debugbar',
+    ),
     'providers' => 
     array (
       0 => 'Barryvdh\\Debugbar\\ServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Debugbar' => 'Barryvdh\\Debugbar\\Facade',
     ),
   ),
   'eklundkristoffer/seedster' => 
@@ -59,13 +59,13 @@
   ),
   'intervention/image' => 
   array (
-    'providers' => 
-    array (
-      0 => 'Intervention\\Image\\ImageServiceProvider',
-    ),
     'aliases' => 
     array (
       'Image' => 'Intervention\\Image\\Facades\\Image',
+    ),
+    'providers' => 
+    array (
+      0 => 'Intervention\\Image\\ImageServiceProvider',
     ),
   ),
   'jenssegers/agent' => 
@@ -146,13 +146,13 @@
   ),
   'proengsoft/laravel-jsvalidation' => 
   array (
-    'providers' => 
-    array (
-      0 => 'Proengsoft\\JsValidation\\JsValidationServiceProvider',
-    ),
     'aliases' => 
     array (
       'JsValidator' => 'Proengsoft\\JsValidation\\Facades\\JsValidatorFacade',
+    ),
+    'providers' => 
+    array (
+      0 => 'Proengsoft\\JsValidation\\JsValidationServiceProvider',
     ),
   ),
   'tymon/jwt-auth' => 
@@ -169,13 +169,13 @@
   ),
   'yajra/laravel-datatables-oracle' => 
   array (
-    'providers' => 
-    array (
-      0 => 'Yajra\\DataTables\\DataTablesServiceProvider',
-    ),
     'aliases' => 
     array (
       'DataTables' => 'Yajra\\DataTables\\Facades\\DataTables',
+    ),
+    'providers' => 
+    array (
+      0 => 'Yajra\\DataTables\\DataTablesServiceProvider',
     ),
   ),
 );

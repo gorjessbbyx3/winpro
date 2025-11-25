@@ -232,7 +232,7 @@ class Factory implements ArrayAccess
      */
     protected function isLegacyFactory(string $path)
     {
-        return ! preg_match("/class\s[A-Z+a-z]+ extends Factory/", file_get_contents($path));
+        return ! preg_match("/class\s[a-zA-Z0-9_\x80-\xff]+ extends Factory/", file_get_contents($path));
     }
 
     /**
@@ -241,6 +241,7 @@ class Factory implements ArrayAccess
      * @param  string  $offset
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return isset($this->definitions[$offset]);
@@ -252,6 +253,7 @@ class Factory implements ArrayAccess
      * @param  string  $offset
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->make($offset);
@@ -264,6 +266,7 @@ class Factory implements ArrayAccess
      * @param  callable  $value
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         $this->define($offset, $value);
@@ -275,6 +278,7 @@ class Factory implements ArrayAccess
      * @param  string  $offset
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         unset($this->definitions[$offset]);

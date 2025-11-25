@@ -24,6 +24,7 @@ use PHPUnit\Framework\Warning;
 use PHPUnit\Util\Printer;
 use ReflectionClass;
 use ReflectionException;
+use SebastianBergmann\RecursionContext\InvalidArgumentException;
 use Throwable;
 
 /**
@@ -148,7 +149,7 @@ final class XmlResultPrinter extends Printer implements TestListener
     /**
      * A test ended.
      *
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function endTest(Test $test, float $time): void
     {
@@ -158,7 +159,8 @@ final class XmlResultPrinter extends Printer implements TestListener
 
         $groups = array_filter(
             $test->getGroups(),
-            static function ($group) {
+            static function ($group)
+            {
                 return !($group === 'small' || $group === 'medium' || $group === 'large');
             }
         );
@@ -232,7 +234,7 @@ final class XmlResultPrinter extends Printer implements TestListener
             } catch (ReflectionException $e) {
                 throw new Exception(
                     $e->getMessage(),
-                    (int) $e->getCode(),
+                    $e->getCode(),
                     $e
                 );
             }
