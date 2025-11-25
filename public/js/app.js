@@ -112,6 +112,11 @@ var App = function App() {
               marginBottom: '10px'
             },
             children: "\u2705 GeoIP Configured with Fallback"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            style: {
+              marginBottom: '10px'
+            },
+            children: "\u2705 Redis Cache & Session Storage"
           })]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {

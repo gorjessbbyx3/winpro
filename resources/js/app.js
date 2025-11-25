@@ -34,6 +34,7 @@ const App = () => {
                         <p style={{ marginBottom: '10px' }}>✅ 31 Game Categories Configured</p>
                         <p style={{ marginBottom: '10px' }}>✅ Default Shop "Seibet Casino" Created</p>
                         <p style={{ marginBottom: '10px' }}>✅ GeoIP Configured with Fallback</p>
+                        <p style={{ marginBottom: '10px' }}>✅ Redis Cache & Session Storage</p>
                     </div>
                 </div>
                 <div style={{ 

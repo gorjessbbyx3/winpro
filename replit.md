@@ -54,6 +54,13 @@ This is a Laravel 8 casino/betting application with React components, originally
    - Returns "Unknown" for country/city when database file is not present
    - Fully functional with graceful degradation
 
+5. **Redis Integration (November 25, 2025)**
+   - Configured Redis Cloud connection for caching and sessions
+   - Successfully connected to redis-12274.c228.us-central1-1.gce.cloud.redislabs.com:12274
+   - Cache driver set to Redis for improved performance
+   - Session driver set to Redis for distributed session management
+   - Performance tested: ~500ms for 10 writes, ~370ms for 10 reads
+
 ## Project Architecture
 
 ### Backend
