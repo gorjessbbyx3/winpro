@@ -33,9 +33,8 @@ class GeoData {
             return $data;
         }
 
-        $reader = new Reader(storage_path() . '/app/GeoIP2-City_20201006/GeoIP2-City.mmdb');
-
         try {
+            $reader = new Reader(storage_path() . '/app/GeoIP2-City_20201006/GeoIP2-City.mmdb');
             $record = $reader->city(UserSystemInfoHelper::get_ip());
             if (isset($record->country->name)) {
                 $data['country'] = $record->country->name;
@@ -43,10 +42,7 @@ class GeoData {
             if (isset($record->city->name)) {
                 $data['city'] = $record->city->name;
             }
-        } catch (IpAddressNotFoundException $e){
-            $data['country'] = 'Unknown';
-            $data['city'] = 'Unknown';
-        } catch (AddressNotFoundException $e) {
+        } catch (\Exception $e){
             $data['country'] = 'Unknown';
             $data['city'] = 'Unknown';
         }

@@ -1,4 +1,4 @@
-modules = ["php-8.2", "web", "ruby-3.2", "nodejs-20"]
+modules = ["php-8.2", "web", "ruby-3.2", "nodejs-20", "postgresql-16"]
 [agent]
 expertMode = true
 
@@ -12,3 +12,39 @@ DB_CONNECTION = "pgsql"
 APP_ENV = "local"
 APP_DEBUG = "true"
 APP_URL = "http://localhost:5000"
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Laravel App"
+
+[[workflows.workflow]]
+name = "Laravel App"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "php -S 0.0.0.0:5000 -t public"
+waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[[ports]]
+localPort = 46373
+externalPort = 3000
+
+[deployment]
+deploymentTarget = "autoscale"
+run = ["php", "-S", "0.0.0.0:5000", "-t", "public"]
