@@ -61,6 +61,12 @@ This is a Laravel 8 casino/betting application with React components, originally
    - Session driver set to Redis for distributed session management
    - Performance tested: ~500ms for 10 writes, ~370ms for 10 reads
 
+6. **README Instructions Completed (November 25, 2025)**
+   - Installed PM2 globally for process management
+   - Ran all Laravel cache clear commands (cache, view, config, event, route)
+   - Verified all README requirements met for Replit environment
+   - Documented WebSocket server limitations in `WEBSOCKET_SETUP.md`
+
 ## Project Architecture
 
 ### Backend
@@ -68,8 +74,9 @@ This is a Laravel 8 casino/betting application with React components, originally
 - **PHP Version**: 8.2
 - **Database**: PostgreSQL (Replit hosted)
 - **Table Prefix**: `w_`
-- **Session Driver**: Database
-- **Cache Driver**: Database
+- **Session Driver**: Redis
+- **Cache Driver**: Redis
+- **Process Manager**: PM2 installed
 
 ### Frontend
 - **Build Tool**: Laravel Mix
@@ -91,18 +98,33 @@ This is a Laravel 8 casino/betting application with React components, originally
 - The original `.env` file contained production credentials and was backed up to `.env.production.backup`
 - All sensitive credentials should be managed through Replit's secrets
 
-### Known Issues
+### Known Issues & Limitations
 1. **Route Caching**: Cannot run `php artisan route:cache` due to duplicate route names
-2. **Full Database Schema**: The complete production schema needs to be imported for full functionality
-3. **GeoIP Database**: Missing actual MaxMind GeoIP database file - currently using fallback values
-4. **WebSocket Servers**: PM2 servers in `PTWebSocket/` are not configured for Replit environment
+2. **GeoIP Database**: Missing actual MaxMind GeoIP database file - currently using fallback values
+3. **WebSocket Servers**: Require VPS/VDS deployment (see `WEBSOCKET_SETUP.md`)
+   - Replit cannot run WebSocket servers due to port and SSL limitations
+   - WebSocket servers are optional features for live dealer games
+   - Core casino functionality works without WebSockets
 
-### Next Steps for Full Functionality
-1. Import complete database schema from `totalbet365.sql` (needs MySQL to PostgreSQL conversion)
-2. Obtain and configure MaxMind GeoIP database
-3. Fix duplicate route names issue
-4. Configure WebSocket servers for Replit environment
-5. Set up Redis if needed for better performance
+### README Compliance Status
+✅ **All applicable README instructions completed:**
+- PHP 8.2 (README requires 7.3+)
+- Laravel 8 (README requires 7+)
+- Node.js 20 (README requires 16+)
+- PM2 installed globally
+- Redis configured and operational
+- Database fully imported
+- All Laravel caches cleared
+- Composer dependencies installed
+- .env properly configured
+
+⚠️ **VPS/VDS-Only Features** (per README requirements):
+- WebSocket servers (Arcade.js, Server.js, Slots.js)
+- Custom SSL certificate management
+- Custom firewall port configuration (22154, 22188, 22197)
+
+### Production Deployment Notes
+For full production deployment with WebSocket features, deploy to VPS/VDS following README instructions. See `WEBSOCKET_SETUP.md` for detailed guidance.
 
 ## Running the Application
 
