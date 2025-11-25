@@ -1,0 +1,10 @@
+{
+  "name": "arcade-server",
+  "version": "1.0.0",
+  "description": "Arcade WebSocket Server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  }
+}

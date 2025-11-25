@@ -1,0 +1,10 @@
+{
+  "name": "slots-server",
+  "version": "1.0.0",
+  "description": "Slots WebSocket Server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  }
+}
