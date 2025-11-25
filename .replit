@@ -4,6 +4,7 @@ expertMode = true
 
 [nix]
 channel = "stable-25_05"
+packages = ["redis"]
 
 [userenv]
 
@@ -42,7 +43,7 @@ localPort = 5000
 externalPort = 80
 
 [[ports]]
-localPort = 46373
+localPort = 41969
 externalPort = 3000
 
 [deployment]
